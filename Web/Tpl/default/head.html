@@ -1,0 +1,58 @@
+<div id="minibg">
+    <div id="mini">
+	<div id="dlt">{:label(3);}</div>
+	<neq name="config.rollnum" value="0">
+         <div id="notice">
+		 <dl id="marquee">
+           <volist name="roll" id="vo">
+		   <dt><a href="{$vo.aid|url=articles,###}">{$vo.title}</a></dt>
+		   </volist>
+         </dl>
+		 </div>
+		 <script type="text/javascript">
+				<!--
+				new Marquee("marquee",0,3,300,24,50,3000,3000)
+				//-->
+			</script>
+			</neq>
+    <div id="mini2">{:label(4);}</div>
+	</div>
+</div>
+
+	<div id="head">
+		<div id="logo">
+			<img src="__PUBLIC__/Uploads/logo/{$config.sitelogo}">
+		</div>
+		<div id="banner">
+		{:Ad(2);}
+		</div>
+	</div>
+	<div id="menu_out">
+		<div id="menu_in">
+			<div id="menu">
+				<ul id="nav">
+					<LI><A class="nav_on" id="mynav0" onmouseover="javascript:qh(0);" href="__APP__"><SPAN>สื าณ</SPAN></A></LI>
+					<volist name="menu" id="vo" offset="0" length='9'> 
+					<li class="menu_line"></li>
+					<li><a href="<eq name="vo.islink" value="0">{$vo.typeid|url=lists,###}<else/>{$vo.url}</eq>"  target="<eq name="vo.target" value="1">_self<else/>_blank</eq>" onmouseover="javascript:qh({$i});" id="mynav{$i}" class="nav_off"><span>{$vo.typename}</span></a></li>
+					</volist>
+				</ul>
+				<div id="menu_con">
+					<div id="qh_con0" style="DISPLAY: block">
+						<ul>
+						{:Label(2);}
+						</ul>
+					</div>
+			<volist name="menuson" id="vo" offset="0" length='9' key="k">
+					<div id="qh_con{$k}" style="DISPLAY: none">
+						<ul>
+						<volist name="vo" id="sub">  
+							<li><a href="{$sub.typeid|url=lists,###}"><span>{$sub.typename}</span></A></LI><LI class="menu_line2"></LI>
+						</volist> 
+						</ul>
+					</div>
+			</volist> 
+				</div>
+			</div>
+		</div>
+	</div> 

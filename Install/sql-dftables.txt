@@ -1,0 +1,278 @@
+DROP TABLE IF EXISTS `#@__access`;
+CREATE TABLE IF NOT EXISTS `#@__access` (
+  `role_id` smallint(6) unsigned NOT NULL,
+  `node_id` smallint(6) unsigned NOT NULL,
+  `level` tinyint(1) NOT NULL,
+  `module` varchar(50) DEFAULT NULL,
+  `pid` int(11) NOT NULL,
+  KEY `groupId` (`role_id`),
+  KEY `nodeId` (`node_id`)
+) ENGINE=MyISAM;
+
+DROP TABLE IF EXISTS `#@__ad`;
+CREATE TABLE IF NOT EXISTS `#@__ad` (
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(80) DEFAULT NULL,
+  `content` text,
+  `description` text,
+  `addtime` varchar(32),
+  `status` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `type` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM;
+
+DROP TABLE IF EXISTS `#@__admin`;
+CREATE TABLE IF NOT EXISTS `#@__admin` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `lastlogintime` int(10) NOT NULL,
+  `lastloginip` varchar(20) NOT NULL,
+  `status` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=MyISAM;
+
+DROP TABLE IF EXISTS `#@__article`;
+CREATE TABLE IF NOT EXISTS `#@__article` (
+  `aid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(80) NOT NULL,
+  `titlecolor` varchar(80) NOT NULL,
+  `author` char(20) NOT NULL,
+  `keywords` char(40) NOT NULL,
+  `description` mediumtext NOT NULL,
+  `note` mediumtext NOT NULL,
+  `linkurl` char(100) NOT NULL,
+  `status` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `copyfrom` varchar(100) NOT NULL,
+  `addtime` varchar(32) NOT NULL,
+  `islink` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `isflash` tinyint(1) NOT NULL DEFAULT '0',
+  `istop` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `isimg` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `imgurl` varchar(255) NOT NULL,
+  `ishot` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `pagenum` int(8) unsigned NOT NULL DEFAULT '0',
+  `hits` mediumint(9) NOT NULL DEFAULT '1',
+  `content` longtext NOT NULL,
+  `typeid` smallint(5) unsigned NOT NULL,
+  `voteid` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`aid`)
+) ENGINE=MyISAM;
+
+DROP TABLE IF EXISTS `#@__config`;
+CREATE TABLE IF NOT EXISTS `#@__config` (
+`id` tinyint(1) unsigned NOT NULL AUTO_INCREMENT,
+  `updown` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `sitetitle` text,
+  `sitetitle2` text,
+  `sitedescription` text,
+  `siteurl` text,
+  `sitetpl` varchar(32) NOT NULL DEFAULT 'default',
+  `sitekeywords` text NOT NULL,
+  `sitetcp` text NOT NULL,
+  `sitelang` tinyint(1) NOT NULL DEFAULT '0',
+  `watermark` tinyint(1) NOT NULL DEFAULT '0',
+  `watermarkimg` text NOT NULL,
+  `sitelx` text NOT NULL,
+  `indexrec` tinyint(2) unsigned NOT NULL,
+  `indexhot` tinyint(2) unsigned NOT NULL,
+  `flashmode` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `noticeid` int(5) unsigned NOT NULL,
+  `noticenum` tinyint(2) unsigned NOT NULL,
+  `rollnum` tinyint(2) unsigned NOT NULL,
+  `isping` tinyint(1) unsigned NOT NULL,
+  `sitelogo` text NOT NULL,
+  `iszy` tinyint(1) unsigned NOT NULL,
+  `pingoff` tinyint(1) unsigned NOT NULL,
+  `postovertime` tinyint(2) unsigned NOT NULL DEFAULT '15',
+  `bookoff` tinyint(1) unsigned NOT NULL,
+  `mood` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `ishits` tinyint(1) unsigned NOT NULL,
+  `iscopyfrom` tinyint(1) unsigned NOT NULL,
+  `isauthor` tinyint(1) unsigned NOT NULL,
+  `indexvote` tinyint(2) unsigned NOT NULL,
+  `xgwz` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `ishomeimg` int(11) unsigned NOT NULL,
+  `mouseimg` tinyint(1) unsigned NOT NULL,
+  `artlistnum` int(2) unsigned NOT NULL,
+  `artlisthot` tinyint(2) unsigned NOT NULL,
+  `artlistrec` tinyint(2) unsigned NOT NULL,
+  `articlehot` tinyint(2) unsigned NOT NULL,
+  `articlerec` tinyint(2) unsigned NOT NULL,
+  `urlmode` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `suffix` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `indexlink` tinyint(1) NOT NULL DEFAULT '1',
+  `indexpic` tinyint(1) NOT NULL DEFAULT '1',
+  `indexpicnum` tinyint(2) NOT NULL DEFAULT '4',
+  `indexpicscroll` tinyint(1) NOT NULL DEFAULT '0',
+  `indexnoticetitle` varchar(32) NOT NULL,
+  `indexrectitle` varchar(32) NOT NULL,
+  `indexhottitle` varchar(32) NOT NULL,
+  `indexlinktitle` varchar(32) NOT NULL,
+  `indexlinkimg` tinyint(1) NOT NULL DEFAULT '0',
+  `indexdiylink` tinyint(1) NOT NULL DEFAULT '1',
+  `listrectitle` varchar(32) NOT NULL,
+  `listhottitle` varchar(32) NOT NULL,
+  `listshowmode` tinyint(1) NOT NULL DEFAULT '0',
+  `artrectitle` varchar(32) NOT NULL,
+  `arthottitle` varchar(32) NOT NULL,
+  `indexvotetitle` varchar(32) NOT NULL,
+  `indexpictitle` varchar(32) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM;
+
+DROP TABLE IF EXISTS `#@__flash`;
+CREATE TABLE IF NOT EXISTS `#@__flash` (
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT ,
+  `url` text NOT NULL ,
+  `pic` varchar(255) NOT NULL ,
+  `title` varchar(50) NOT NULL ,
+  `status` tinyint(1) unsigned NOT NULL DEFAULT '0' ,
+  `rank` mediumint(5) unsigned NOT NULL DEFAULT '10' ,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM;
+
+DROP TABLE IF EXISTS `#@__guestbook`;
+CREATE TABLE IF NOT EXISTS `#@__guestbook` (
+  `id` int(5) unsigned NOT NULL AUTO_INCREMENT ,
+  `author` varchar(32) NOT NULL ,
+  `content` text NOT NULL ,
+  `addtime` varchar(20) NOT NULL ,
+  `recontent` text NOT NULL ,
+  `status` tinyint(1) unsigned NOT NULL DEFAULT '1' ,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM;
+
+DROP TABLE IF EXISTS `#@__key`;
+CREATE TABLE IF NOT EXISTS `#@__key` (
+  `id` mediumint(5) unsigned NOT NULL AUTO_INCREMENT ,
+  `title` varchar(40) NOT NULL ,
+  `url` varchar(255) DEFAULT NULL ,
+  `rank` tinyint(2) unsigned NOT NULL ,
+  `num` tinyint(2) unsigned NOT NULL ,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM;
+
+DROP TABLE IF EXISTS `#@__label`;
+CREATE TABLE IF NOT EXISTS `#@__label` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT ,
+  `title` varchar(80) NOT NULL ,
+  `content` text NOT NULL ,
+  `addtime` varchar(32) NOT NULL ,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM;
+
+DROP TABLE IF EXISTS `#@__link`;
+CREATE TABLE IF NOT EXISTS `#@__link` (
+  `id` mediumint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(40) NOT NULL,
+  `url` varchar(80) NOT NULL,
+  `logo` text NOT NULL,
+  `islogo` tinyint(1) unsigned NOT NULL,
+  `rank` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `status` tinyint(1) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM;
+
+
+DROP TABLE IF EXISTS `#@__mood`;
+CREATE TABLE IF NOT EXISTS `#@__mood` (
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT ,
+  `mood1` mediumint(8) unsigned DEFAULT '0' ,
+  `mood2` mediumint(8) unsigned DEFAULT '0' ,
+  `mood3` mediumint(8) unsigned DEFAULT '0' ,
+  `mood4` mediumint(8) unsigned DEFAULT '0' ,
+  `mood5` mediumint(8) unsigned DEFAULT '0' ,
+  `mood6` mediumint(8) unsigned DEFAULT '0' ,
+  `mood7` mediumint(8) unsigned DEFAULT '0' ,
+  `mood8` mediumint(8) unsigned DEFAULT '0' ,
+  `aid` mediumint(8) unsigned NOT NULL ,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM;
+
+DROP TABLE IF EXISTS `#@__node`;
+CREATE TABLE IF NOT EXISTS `#@__node` (
+  `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `remark` varchar(255) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT '0',
+  `title` varchar(100) NOT NULL ,
+  `sort` smallint(6) unsigned DEFAULT NULL,
+  `pid` smallint(6) unsigned NOT NULL,
+  `level` tinyint(1) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `title` (`title`),
+  KEY `level` (`level`),
+  KEY `pid` (`pid`),
+  KEY `status` (`status`),
+  KEY `name` (`name`)
+) ENGINE=MyISAM;
+
+DROP TABLE IF EXISTS `#@__pl`;
+CREATE TABLE IF NOT EXISTS `#@__pl` (
+  `id` mediumint(5) unsigned NOT NULL AUTO_INCREMENT ,
+  `aid` mediumint(5) unsigned NOT NULL ,
+  `author` varchar(40) NOT NULL ,
+  `ip` varchar(15) NOT NULL ,
+  `ptime` varchar(20) NOT NULL ,
+  `content` text NOT NULL ,
+  `recontent` text ,
+  `status` tinyint(1) DEFAULT '1' ,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM;
+
+DROP TABLE IF EXISTS `#@__role`;
+CREATE TABLE IF NOT EXISTS `#@__role` (
+  `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL,
+  `pid` smallint(6) DEFAULT NULL,
+  `status` tinyint(1) unsigned DEFAULT NULL,
+  `remark` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `pid` (`pid`),
+  KEY `status` (`status`)
+) ENGINE=MyISAM;
+
+DROP TABLE IF EXISTS `#@__role_admin`;
+CREATE TABLE IF NOT EXISTS `#@__role_admin` (
+  `role_id` mediumint(9) unsigned DEFAULT NULL,
+  `user_id` char(32) DEFAULT NULL,
+  KEY `group_id` (`role_id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=MyISAM;
+
+DROP TABLE IF EXISTS `#@__type`;
+CREATE TABLE IF NOT EXISTS `#@__type` (
+  `typeid` mediumint(5) unsigned NOT NULL AUTO_INCREMENT ,
+  `typename` varchar(20) NOT NULL ,
+  `keywords` char(40) NOT NULL ,
+  `description` varchar(255) NOT NULL ,
+  `ismenu` tinyint(1) unsigned NOT NULL DEFAULT '1' ,
+  `isindex` tinyint(1) unsigned NOT NULL DEFAULT '1' ,
+  `indexnum` tinyint(2) unsigned NOT NULL ,
+  `islink` tinyint(1) unsigned NOT NULL DEFAULT '0' ,
+  `url` char(255) NOT NULL ,
+  `isuser` tinyint(1) unsigned NOT NULL DEFAULT '1' ,
+  `target` tinyint(1) unsigned NOT NULL DEFAULT '1' ,
+  `readme` varchar(255) NOT NULL ,
+  `drank` mediumint(5) unsigned NOT NULL ,
+  `irank` mediumint(5) NOT NULL ,
+  `fid` mediumint(5) unsigned NOT NULL ,
+  `path` varchar(128) NOT NULL,
+  PRIMARY KEY (`typeid`)
+) ENGINE=MyISAM;
+
+DROP TABLE IF EXISTS `#@__vote`;
+CREATE TABLE IF NOT EXISTS `#@__vote` (
+  `id` mediumint(5) unsigned NOT NULL AUTO_INCREMENT ,
+  `title` varchar(80) NOT NULL ,
+  `vote` text NOT NULL ,
+  `status` tinyint(1) unsigned NOT NULL ,
+  `stype` tinyint(1) unsigned NOT NULL ,
+  `starttime` varchar(32) NOT NULL ,
+  `overtime` varchar(32) NOT NULL ,
+  `rank` tinyint(2) NOT NULL ,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM;
