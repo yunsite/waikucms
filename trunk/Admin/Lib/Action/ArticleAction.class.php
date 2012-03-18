@@ -505,13 +505,25 @@ class ArticleAction extends CommonAction
 		switch ($config['suffix'])
 		{
 			case 0:
-				$suffix	= '.html';
+				$suffix = '.html';
 				break;
 			case 1:
 				$suffix = '.htm';
 				break;
 			case 2:
 				$suffix = '.shtml';
+				break;
+			case 3:
+				$suffix = '.php';
+				break;
+			case 4:
+				$suffix = '.asp';
+				break;
+			case 5:
+				$suffix = '.aspx';
+				break;
+			case 6:
+				$suffix = '.jsp';
 				break;
 		}
 		$this->assign('urlmode',$urlmode);
