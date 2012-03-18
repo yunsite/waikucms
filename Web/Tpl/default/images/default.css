@@ -200,8 +200,8 @@ background-position:right 100%;color:#333333;text-decoration:none;padding:14px 1
 
 /**Ê×Ò³ÑùÊ½**/
 #IndexContent{float:left;margin-top:10px;width:700px;height:auto;text-align:left;overflow:hidden;}
-.IndexLeft{float:left;background:url(bg2010.gif) repeat-x 0 -742px;width:343px;height:270px;border:#d4d4d4 1px solid;margin-bottom:8px;}
-.IndexRght{float:right;background:url(bg2010.gif) repeat-x 0 -742px;width:343px;height:270px;border:#d4d4d4 1px solid;margin-bottom:8px;}
+.IndexLeft{float:left;background:url(bg2010.gif) repeat-x 0 -742px;width:343px;height:auto;border:#d4d4d4 1px solid;margin-bottom:8px;}
+.IndexRght{float:right;background:url(bg2010.gif) repeat-x 0 -742px;width:343px;height:auto;border:#d4d4d4 1px solid;margin-bottom:8px;}
 .IndexContentTitle{background:url(hd_h2.gif) no-repeat 6px 10px;height:27px;padding:5px 10px 0 20px;border-bottom:1px solid #d4d4d4;text-align:left;overflow:hidden;}
 .IndexContentTitleLeft{float:left;}
 .IndexContentTitleRight{float:right;}
