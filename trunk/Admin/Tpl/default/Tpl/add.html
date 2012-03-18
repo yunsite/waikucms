@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equtv="Content-Type" content="text/html; charset=gb2312" />
+<title>网站后台管理</title>
+<link href="/gbk/Public/Admin/images/Admin_css.css" type=text/css rel=stylesheet>
+<link rel="shortcut icon" href="/gbk/Public/Admin/images/myfav.ico" type="image/x-icon" />
+<import file= "Admin.js.admin,Admin.js.Jquery"/>
+</head>
+<body>
+<table width="95%" border="0"  align=center cellpadding="3" cellspacing="2" bgcolor="#FFFFFF" class="admintable">
+<form action="/gbk/wk.php?s=/Tpl/Update"  name="myform" method="post" id="myform" enctype="multipart/form-data">
+<tr> 
+    <td colspan="2" align=left class="admintitle">模板编辑</td></tr>
+<tr> 
+<td width="20%" class="b1_1">当前模板位置</td>
+<td class="b1_1"><input name="filename" type="text"  size ="100" value="{$filename}"><span>（不允许用 “..” 形式的路径）</span></td>
+</tr>
+
+<tr>
+  <td valign="top" class="b1_1"><p>内容</p>
+  <td class="b1_1"><textarea id="Content" name="content" style="width:700px;height:300px;">{$content}
+</textarea>
+</td>
+</tr>
+<td width="20%" class="b1_1"></td>
+<td class="b1_1"><input name="submit" type="submit" class="bnt" value="编 辑">&nbsp;&nbsp;<input type="button" onclick="history.go(-1);" class="bnt" value="返 回"></td>
+</tr>
+</form>
+</table>
+<div style="text-align:center;margin:10px;">
+<hr>
+<include file="Index:copy" /> 
+</div>
+</body>
+</html>
